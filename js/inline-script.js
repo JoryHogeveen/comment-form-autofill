@@ -42,6 +42,7 @@ jQuery( function( $ ) {
 					}
 					break;
 			}
+			_debug( 'input ' + type + ': ' + name + ' : ' + value );
 		} );
 
 		$select.each( function () {
@@ -51,10 +52,10 @@ jQuery( function( $ ) {
 			if ( ! value ) {
 				value = getUrlParam( name );
 				if ( value ) {
-					console.log( value );
 					$this.val( value );
 				}
 			}
+			_debug( 'select: ' + name + ' : ' + value );
 		} );
 
 		$textarea.each( function () {
@@ -62,8 +63,12 @@ jQuery( function( $ ) {
 				name  = $this.attr( 'name' ),
 				value = $this.val();
 			if ( ! value ) {
-				$this.val( getUrlParam( name, value ) );
+				value = getUrlParam( name, value );
+				if ( value ) {
+					$this.val( value );
+				}
 			}
+			_debug( 'textarea: ' + name + ' : ' + value );
 		} );
 
 		var rating = $this.find( '#rating' );
@@ -71,6 +76,7 @@ jQuery( function( $ ) {
 			$window.load( function () {
 				var value = rating.val();
 				$this.find( '.star-' + value ).click();
+				_debug( 'rating: ' + value );
 			} );
 		}
 	} );
@@ -83,5 +89,11 @@ jQuery( function( $ ) {
 			return default_value;
 		}
 		return null;
+	}
+
+	function _debug( value ) {
+		if ( url_vars[ 'debug' ] ) {
+			console.log( value );
+		}
 	}
 } );
