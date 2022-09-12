@@ -20,8 +20,8 @@ jQuery( function( $ ) {
 				var $this     = $( this ),
 					type      = $this.attr( 'type' ),
 					name      = $this.attr( 'name' ),
-					url_value = getUrlParam( name ),
-					value;
+					value     = $this.attr( 'value' )
+					url_value = getUrlParam( name );
 
 				// No url value found.
 				if ( null === url_value ) {
@@ -30,14 +30,12 @@ jQuery( function( $ ) {
 
 				switch ( type ) {
 					case 'radio':
-						value = $this.attr( 'value' );
 						$this.prop( 'checked', ( value === url_value ) );
 						break;
 					case 'checkbox':
 						$this.prop( 'checked', Boolean( url_value ) );
 						break;
 					default:
-						value = $this.val();
 						if ( ! value ) {
 							$this.val( url_value );
 						}
@@ -49,7 +47,7 @@ jQuery( function( $ ) {
 			$select.each( function () {
 				var $this = $( this ),
 					name  = $this.attr( 'name' ),
-					value = $this.val();
+					value = $this.attr( 'value' );
 				if ( ! value ) {
 					value = getUrlParam( name );
 					if ( value ) {
@@ -62,7 +60,7 @@ jQuery( function( $ ) {
 			$textarea.each( function () {
 				var $this = $( this ),
 					name  = $this.attr( 'name' ),
-					value = $this.val();
+					value = $this.html();
 				if ( ! value ) {
 					value = getUrlParam( name, value );
 					if ( value ) {
