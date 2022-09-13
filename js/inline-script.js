@@ -14,7 +14,8 @@ jQuery( function( $ ) {
 			var $this  = $( this ),
 				$input    = $this.find( 'input' ),
 				$select   = $this.find( 'select' ),
-				$textarea = $this.find( 'textarea' );
+				$textarea = $this.find( 'textarea' ),
+				hidden    = getUrlParam('hidden','').split(',');
 
 			$input.each( function() {
 				var $this     = $( this ),
@@ -41,6 +42,11 @@ jQuery( function( $ ) {
 						}
 						break;
 				}
+
+				if ( hidden.includes( name ) ) {
+					$this.hide();
+				}
+
 				_debug( 'input ' + type + ': ' + name + ' : ' + value );
 			} );
 
@@ -52,6 +58,10 @@ jQuery( function( $ ) {
 					value = getUrlParam( name );
 					if ( value ) {
 						$this.val( value );
+
+						if ( hidden.includes( name ) ) {
+							$this.hide();
+						}
 					}
 				}
 				_debug( 'select: ' + name + ' : ' + value );
@@ -65,6 +75,10 @@ jQuery( function( $ ) {
 					value = getUrlParam( name, value );
 					if ( value ) {
 						$this.val( value );
+
+						if ( hidden.includes( name ) ) {
+							$this.hide();
+						}
 					}
 				}
 				_debug( 'textarea: ' + name + ' : ' + value );
