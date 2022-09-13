@@ -22,7 +22,7 @@ jQuery( function( $ ) {
 				var $this     = $( this ),
 					type      = $this.attr( 'type' ),
 					name      = $this.attr( 'name' ),
-					value     = $this.attr( 'value' )
+					value     = $this.attr( 'value' ),
 					url_value = getUrlParam( name );
 
 				// No url value found.
