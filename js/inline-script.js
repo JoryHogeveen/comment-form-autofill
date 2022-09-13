@@ -100,14 +100,11 @@ jQuery( function( $ ) {
 		} );
 	} );
 
-	function getUrlParam( parameter, default_value ) {
+	function getUrlParam( parameter, default_value = null ) {
 		if ( 'undefined' !== typeof url_vars[ parameter ] ) {
 			return decodeURIComponent( url_vars[ parameter ] );
 		}
-		if ( default_value ) {
-			return default_value;
-		}
-		return null;
+		return default_value;
 	}
 
 	function _debug( value ) {
