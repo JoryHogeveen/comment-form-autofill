@@ -15,7 +15,8 @@ jQuery( function( $ ) {
 				$input    = $this.find( 'input' ),
 				$select   = $this.find( 'select' ),
 				$textarea = $this.find( 'textarea' ),
-				hidden    = getUrlParam('hidden','').split(',');
+				readonly  = getUrlParam( 'readonly', '' ).split( ',' ),
+				hidden    = getUrlParam( 'hidden', '' ).split( ',' );
 
 			$input.each( function() {
 				var $this     = $( this ),
@@ -45,6 +46,8 @@ jQuery( function( $ ) {
 
 				if ( hidden.includes( name ) ) {
 					$this.hide();
+				} else if ( readonly.includes( name ) ) {
+					$this.prop( 'readonly', true );
 				}
 
 				_debug( 'input ' + type + ': ' + name + ' : ' + value );
@@ -61,6 +64,8 @@ jQuery( function( $ ) {
 
 						if ( hidden.includes( name ) ) {
 							$this.hide();
+						} else if ( readonly.includes( name ) ) {
+							$this.prop( 'readonly', true );
 						}
 					}
 				}
@@ -78,6 +83,8 @@ jQuery( function( $ ) {
 
 						if ( hidden.includes( name ) ) {
 							$this.hide();
+						} else if ( readonly.includes( name ) ) {
+							$this.prop( 'readonly', true );
 						}
 					}
 				}
