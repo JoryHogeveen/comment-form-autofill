@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Comment form autofill
  * Description:       Autofill comment form fields by URL parameters.
- * Version:           1.2
+ * Version:           1.3
  * Author:            Jory Hogeveen
  * Author URI:        https://www.keraweb.nl
  * Text Domain:       comment-form-autofill
