@@ -18,6 +18,16 @@ jQuery( function( $ ) {
 				readonly  = getUrlParam( 'readonly', '' ).split( ',' ),
 				hidden    = getUrlParam( 'hidden', '' ).split( ',' );
 
+			function hide( element ) {
+				var $e      = $( element ),
+					name    = $this.attr( 'name' ),
+					id      = $this.attr( 'id' ),
+					$label  = $this.find( 'label[for='  + id + ']' );
+
+				$e.hide();
+				$label.hide();
+			}
+
 			$input.each( function() {
 				var $this     = $( this ),
 					type      = $this.attr( 'type' ),
@@ -45,7 +55,7 @@ jQuery( function( $ ) {
 				}
 
 				if ( hidden.includes( name ) ) {
-					$this.hide();
+					hide( $this );
 				} else if ( readonly.includes( name ) ) {
 					$this.prop( 'readonly', true );
 				}
@@ -63,7 +73,7 @@ jQuery( function( $ ) {
 						$this.val( value );
 
 						if ( hidden.includes( name ) ) {
-							$this.hide();
+							hide( $this );
 						} else if ( readonly.includes( name ) ) {
 							$this.prop( 'readonly', true );
 						}
@@ -82,7 +92,7 @@ jQuery( function( $ ) {
 						$this.val( value );
 
 						if ( hidden.includes( name ) ) {
-							$this.hide();
+							hide( $this );
 						} else if ( readonly.includes( name ) ) {
 							$this.prop( 'readonly', true );
 						}
