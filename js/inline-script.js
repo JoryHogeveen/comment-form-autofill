@@ -20,7 +20,6 @@ jQuery( function( $ ) {
 
 			function hide( element ) {
 				var $e      = $( element ),
-					name    = $this.attr( 'name' ),
 					id      = $this.attr( 'id' ),
 					$label  = $this.find( 'label[for='  + id + ']' );
 
