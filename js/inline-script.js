@@ -11,20 +11,24 @@ jQuery( function( $ ) {
 
 	$window.load( function () {
 		$( '.comment-form' ).each( function() {
-			var $this  = $( this ),
-				$input    = $this.find( 'input' ),
-				$select   = $this.find( 'select' ),
-				$textarea = $this.find( 'textarea' ),
+			var $form  = $( this ),
+				$input    = $form.find( 'input' ),
+				$select   = $form.find( 'select' ),
+				$textarea = $form.find( 'textarea' ),
 				readonly  = getUrlParam( 'readonly', '' ).split( ',' ),
 				hidden    = getUrlParam( 'hidden', '' ).split( ',' );
 
 			function hide( element ) {
-				var $e      = $( element ),
-					id      = $this.attr( 'id' ),
-					$label  = $this.find( 'label[for='  + id + ']' );
+				var $elem   = $( element ),
+					id      = $elem.attr( 'id' ),
+					$label  = $form.find( 'label[for='  + id + ']' ),
+					$parent = $elem.parent();
 
-				$e.hide();
+				$elem.hide();
 				$label.hide();
+				if ( ! $parent.children(':visible').length ) {
+					$parent.hide();
+				}
 			}
 
 			$input.each( function() {
@@ -100,10 +104,10 @@ jQuery( function( $ ) {
 				_debug( 'textarea: ' + name + ' : ' + value );
 			} );
 
-			var rating = $this.find( '#rating' );
+			var rating = $form.find( '#rating' );
 			if ( rating.length ) {
 				var value = rating.val();
-				$this.find( '.star-' + value ).click();
+				$form.find( '.star-' + value ).click();
 				_debug( 'rating: ' + value );
 			}
 		} );
