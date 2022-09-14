@@ -26,6 +26,7 @@ jQuery( function( $ ) {
 
 				$elem.hide();
 				$label.hide();
+				// Hide parent if no children are visible.
 				if ( ! $parent.children(':visible').length ) {
 					$parent.hide();
 				}
